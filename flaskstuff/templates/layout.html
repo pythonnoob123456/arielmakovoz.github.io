@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin:0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #003F72;
+            box-shadow: 0 0 20px -10px;
+        }
+
+        .navbar a {
+            padding-left:20px;
+            float: left;
+            padding-top: 21px;
+            padding-right: 16px;
+            padding-bottom: 21px;
+            text-decoration: none;
+            font-size: 17px;
+            color:white;
+        }
+        .navbar a:hover {
+            background-color: rgba(0, 0, 100, 0.74);
+            color:white;
+        }
+        #move1 {
+            margin-left: 700px;
+        }
+        #move2 {
+            margin-left: 250px;
+        }
+        #rounded-box {
+            border-radius: 25px;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+            background: gray;
+        }
+        .good {
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            margin:0;
+            padding:8px;
+        }
+        .bad {
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+            margin:0;
+            padding:8px;
+        }
+        .closebtngood {
+            color: white;
+            margin-right: 15px;
+            float: right;
+            font-size: 22px;
+            cursor: pointer;
+            margin-top: 16px;
+            font-family: monospace;
+            background-color: #4CAF50;
+            border: none;
+        }
+        .closebtnbad {
+            color: white;
+            margin-right: 15px;
+            float: right;
+            font-size: 22px;
+            cursor: pointer;
+            margin-top: 14px;
+            font-family: monospace;
+            background-color: #f44336;
+            border: none;
+        }
+        .closebtngood:hover {
+            color: black;
+        }
+        .closebtnbad:hover {
+            color: black;
+        }
+    </style>
+    <!-- first is how to the right and second is how down horizontal and second is verticle-->
+    <!--{% if title %} -->
+    <!--<title>Flask Blog - {{ title }}</title>-->
+    <!--{% else %}-->
+    <!--    <title>Flask Blog</title>-->
+    <!--{% endif %}-->
+</head>
+<body>
+    <div class = "navbar">
+        <a href="{{ url_for('home') }}" id="move2">Ariel Makovoz</a>
+        <a href="{{ url_for('home') }}" id="move1">Home</a>
+        <a href='#'>Projects</a>
+        <a href='about'>About</a>
+        <a href='#'>Contact</a>
+        {% if session['logged'] %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="#">{{session['user']}}</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+    </div>
+    <form method="post" action="">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="{{ category }}">
+                        {% if category == "good" %}
+                            <input class = "closebtngood" type="submit" name="close" value='X'>
+                        {% else %}
+                            <input class = "closebtnbad" type="submit" name="close" value='X'>
+                        {% endif %}
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </form>
+    <div>
+        {% block content %}{% endblock content %}
+    </div>
+</body>
+</html>

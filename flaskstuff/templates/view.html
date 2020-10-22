@@ -1,0 +1,6 @@
+{% extends "layout.html" %}
+{% block content %} 
+    {% for item in values %}
+        <P>Name: {{item.username}}, Email: {{ item.email }}</P>
+    {% endfor %}
+{% endblock %}

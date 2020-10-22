@@ -1,0 +1,210 @@
+{% extends "layout.html" %}
+{% block content %} 
+    <style>
+        #movement img{
+            width:500px;
+            height:auto;
+            text-align: center;
+        }
+        .movementc1{
+            padding-left: 200px;
+        }
+        .movementc2{
+            padding-left: 240px;
+        }
+        .movementc3{
+            padding-left: 320px;
+        }
+        .movementc4{
+            padding-left: 290px;
+        }
+        .movementc5{
+            padding-left: 180px;
+        }
+        p {
+            font-size: 20px;
+            color: #000;
+            text-decoration: none;
+        }
+        .box1 {
+            display: inline-block;
+            margin-top: 20px;
+            margin-left: 100px;
+            box-shadow: 0 0 20px -10px #000;
+            overflow: auto;
+            width:500px;
+            height:auto;
+        }
+        .box1:hover {
+            box-shadow: 0 0 30px -10px #000;
+        }
+        .box2 {
+            display: inline-block;
+            box-shadow: 0 0 20px -10px #000;
+            overflow: auto;
+            width:600px;
+            height:670px;
+            background-color: white;
+            margin-left: 20px;
+        }
+        .box3 {
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 0 20px -10px #000;
+            overflow: auto;
+            width:800px;
+            height:493px;
+            background-color: white;
+            margin-left: 100px;
+        }
+        .box4 {
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 0 20px -10px #000;
+            overflow: auto;
+            width:300px;
+            height:493px;
+            background-color: white;
+            margin-left: 20px;
+        }
+        .box5 {
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 0 20px -10px #000;
+            overflow: auto;
+            width:1125px;
+            height:493px;
+            background-color: white;
+            margin-left: 100px;
+        }
+        .box6 {
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 0 20px -10px #000;
+            overflow: auto;
+            width:670px;
+            height:400px;
+            background-color: white;
+            margin-left: 100px;
+        }
+        .box7 {
+            display: block;
+            margin-top: 20px;
+            box-shadow: 0 0 20px -10px #000;
+            overflow: auto;
+            width:400px;
+            height:470px;
+            background-color: white;
+            margin-right: 80px;
+            float:right;
+        }
+        .box2:hover {
+            box-shadow: 0 0 30px -10px #000;
+        }
+        .box3:hover {
+            box-shadow: 0 0 30px -10px #000;
+        }
+        .box4:hover {
+            box-shadow: 0 0 30px -10px #000;
+        }
+        .box5:hover {
+            box-shadow: 0 0 30px -10px #000;
+        }
+        .box6:hover {
+            box-shadow: 0 0 30px -10px #000;
+        }
+        .box7:hover {
+            box-shadow: 0 0 30px -10px #000;
+        }
+        .sidebar {
+            box-shadow: 0 0 20px -10px #000; 
+            width:600px;
+            height:2000px;
+            top:0;
+            display: block;
+            overflow: auto;
+            float:right;
+            margin-top: 20px;
+        }
+    </style>
+    <div class = "box1">
+        <div id="movement">
+            <a href="{{ url_for('about') }}" style="text-decoration: none;">
+                <img src="{{url_for('static', filename='Ariel_Makovoz.PNG')}}" >
+                <div class="movementc1">
+                    <p>About Me</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class = "box2">
+        <div id="movement">
+            <a href="{{ url_for('register') }}" style="text-decoration: none;">
+                <img src="{{url_for('static', filename='projects.jpg')}}" style="width:600px;height:600px;">
+                <div class="movementc2">
+                    <p>My Projects</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="sidebar">
+        <p>CODER</p>
+        <p>INVENTOR</p>
+        <p>STUDENT</p>
+        <p>DISCORD DEVELOPER</p>
+        <p>3D DESGINGER</p>
+    </div>
+    <div class = "box3">
+        <div id="movement">
+            <a href="{{ url_for('register') }}" style="text-decoration: none;">
+                <img src="{{url_for('static', filename='contact_me.webp')}}" style="width:700px;height:393px;">
+                <div class="movementc3">
+                    <p>Contact Me</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class = "box4">
+        <div id="movement">
+            <div class="movementc">
+                <img src="{{url_for('static', filename='gmail.jpg')}}" style="width:250px;height:140px;margin-bottom: 40px;">
+                <img src="{{url_for('static', filename='github.png')}}" style="width:230px;height:93px;">
+                <img src="{{url_for('static', filename='discord3.png')}}" style="width:180px;height:180px;margin-top: 20px;margin-left: 10px;">
+  
+            </div>
+        </div>
+    </div>
+    {% if session['logged'] %}
+        <div class = "box5">
+            <div id="movement">
+                <a href="{{ url_for('register') }}" style="text-decoration: none;">
+                    <div class="movementc">
+                        <p><strong>Thank you</strong> for joining my community!</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% else %}
+        <div class = "box6">
+            <div id="movement">
+                <a href="{{ url_for('register') }}" style="text-decoration: none;">
+                    <img src="{{url_for('static', filename='register_me.jpg')}}" style="width:670px;height:330px;">
+                    <div class="movementc4">
+                        <p>Register</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class = "box7">
+            <div id="movement">
+                <a href="{{ url_for('register') }}" style="text-decoration: none;">
+                    <img src="{{url_for('static', filename='login_me.png')}}" style="width:400px;height:400px;">
+                    <div class="movementc5">
+                        <p>Login</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock content %}
